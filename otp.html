@@ -45,15 +45,21 @@
         const inputsRef = document.querySelectorAll('input');
         inputsRef.forEach((input)=>{
             input.addEventListener('keyup',function(e){
-
-                if (e.key=="Backspace"){
-                    e.target.previoudElementSibling?.focus();
-                } else() {
-
-                }
+                if (e.key!=="Backspace" && e.key!=="Delete"){
                 e.target.nextElementSibling?.focus();
+                }
             })
         })
+
+        inputsRef.forEach((input)=>{
+            input.addEventListener('keydown',function(e){
+                if (e.key=="Backspace" || e.key=="Delete"){
+                    if (!e.target.value){
+                        e.target.previousElementSibling?.focus();
+                    }
+                }
+            })
+        })        
     </script>
 </div>
 </body>

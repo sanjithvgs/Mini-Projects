@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .comment-wrapper{
+            padding: 10px;
+        }   
+
+        .comment-detail{
+            background-color:lightskyblue;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+
+
+        .comment-box a{
+            margin: 5px 0;
+        }
+
+        .comment-reply{
+            margin-left: 50px;
+            /* padding: 10px; */
+        }
+
+        /* .comment-form{
+            padding: 10px;
+        } */
+
+        .comment-form input{
+            border-radius: 5px;
+            height: 30px;
+            padding: 0 10px;
+            /* margin-left:50px; */
+        }
+
+        .comment-form button{
+            border-radius: 5px;
+            height: 30px;
+            background-color:lightsteelblue;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="comment-wrapper">
+        <div class="comment-box">
+            <div class="comment-detail">
+                <h2>First comment</h2>
+                <a href="#">Reply</a>
+            </div>
+
+            <div class="comment-reply">
+
+                <!-- <div class="comment-box">
+                    <div class="comment-detail">
+                    <h2>Hi</h2>
+                    <a href="#">Reply</a>
+                </div>
+                </div>
+
+                <div class="comment-box">
+                    <div class="comment-detail">
+                    <h2>Hi2</h2>
+                    <a href="#">Reply</a>
+                </div>
+                </div>
+
+            </div>
+    
+            <div class="comment-form">
+                <input placeholder="Add a reply...">
+                <button>Submit</button>
+            </div> -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createCommentBox(ref, comment){
+            const commentBoxRef = document.createElement('div');
+            commentBoxRef.className = 'comment-box';
+            commentBoxRef.innerHTML = `
+                <div class="comment-detail">
+                    <h2>${comment}</h2>
+                    <a href="#">Reply</a>
+                </div>
+                <div class="comment-form">
+                <input placeholder="Add a reply...">
+                <button>Submit</button
+                </div>
+                <div class="comment-reply">
+                </div>
+            `;
+
+            ref.appendChild(commentBoxRef);
+        }
+
+        function createCommentForm(ref) {
+            const commentFormRef = document.createElement('div');
+            commentFormRef.className = 'comment-form';
+            commentFormRef.innerHTML = `
+                <input placeholder="Add a reply...">
+                <button>Submit</button>
+            `;       
+            
+            ref.appendChild(commentFormRef);
+        }
+        const commentWrapperRef = document.querySelector('.comment-wrapper');
+        commentWrapperRef.addEventListener('click',function(e){
+            
+            if (e.target.nodeName === 'A') {
+                const commentBoxRef = e.target.closest('.comment-box');
+                const commentReplyRef = commentBoxRef.querySelector('.comment-reply');
+                createCommentBox(commentReplyRef, 'Hi2');
+            }
+        })
+
+    </script>
+</body>
+</html>
