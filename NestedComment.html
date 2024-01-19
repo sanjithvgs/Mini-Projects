@@ -105,6 +105,29 @@
             `;
 
             ref.appendChild(commentBoxRef);
+
+            commentBoxRef.querySelector('button').addEventListener('click',function(e){
+                const currentCommnent = e.target.previousElementSibling.value;
+                const currentRef = e.target.closest('.comment-form'); 
+                const parentRef = e.target.closest('.comment-box');
+                createCommentDetail(parentRef, currentRef, currentCommnent);
+            })
+
+
+        }
+
+        function createCommentDetail(parentRef, currentRef, comment){
+            const commentDetailRef = document.createElement('div');
+            commentDetailRef.className = 'comment-detail';
+            commentDetailRef.innerHTML = `
+                    <h2>${comment}</h2>
+                    <a href="#">Reply</a>
+            `;       
+            
+            ref.insertBefore(currentRef, commentDetailRef);
+
+
+
         }
 
         function createCommentForm(ref) {
