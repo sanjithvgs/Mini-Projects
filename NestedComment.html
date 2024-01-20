@@ -92,13 +92,9 @@
             const commentBoxRef = document.createElement('div');
             commentBoxRef.className = 'comment-box';
             commentBoxRef.innerHTML = `
-                <div class="comment-detail">
-                    <h2>${comment}</h2>
-                    <a href="#">Reply</a>
-                </div>
                 <div class="comment-form">
-                <input placeholder="Add a reply...">
-                <button>Submit</button
+                <input placeholder="Add a reply..."/>
+                <button>Submit</button>
                 </div>
                 <div class="comment-reply">
                 </div>
@@ -110,6 +106,7 @@
                 const currentCommnent = e.target.previousElementSibling.value;
                 const currentRef = e.target.closest('.comment-form'); 
                 const parentRef = e.target.closest('.comment-box');
+                currentRef.style.display='none';
                 createCommentDetail(parentRef, currentRef, currentCommnent);
             })
 
@@ -124,22 +121,22 @@
                     <a href="#">Reply</a>
             `;       
             
-            ref.insertBefore(currentRef, commentDetailRef);
+            parentRef.insertBefore(commentDetailRef, currentRef);
 
 
 
         }
 
-        function createCommentForm(ref) {
-            const commentFormRef = document.createElement('div');
-            commentFormRef.className = 'comment-form';
-            commentFormRef.innerHTML = `
-                <input placeholder="Add a reply...">
-                <button>Submit</button>
-            `;       
+        // function createCommentForm(ref) {
+        //     const commentFormRef = document.createElement('div');
+        //     commentFormRef.className = 'comment-form';
+        //     commentFormRef.innerHTML = `
+        //         <input placeholder="Add a reply..."/>
+        //         <button>Submit</button>
+        //     `;       
             
-            ref.appendChild(commentFormRef);
-        }
+        //     ref.appendChild(commentFormRef);
+        // }
         const commentWrapperRef = document.querySelector('.comment-wrapper');
         commentWrapperRef.addEventListener('click',function(e){
             
